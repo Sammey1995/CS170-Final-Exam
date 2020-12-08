@@ -15,13 +15,13 @@
 //  ===================
 //  Function Prototypes
 //  ===================
-    void FillArray(int[]);
+    void FillArray(int[], int);
     bool GoAgain();
-    void PrintArray(int[]);
+    void PrintArray(int[], int);
     int  Random();
     int  RandomAsk();
     void SeedGenerator(unsigned int);
-    void SumofArray(int[]);
+    void SumofArray(int[], int);
 //  ============================
 
 //  ===============
@@ -37,11 +37,12 @@
         
         do {
         SeedGenerator(1);
-        FillArray(dataArray);
+        numOfNums = RandomAsk();
+        FillArray(dataArray, numOfNums);
 
-        PrintArray(dataArray);
+        PrintArray(dataArray, numOfNums);
 
-        SumofArray(dataArray);
+        SumofArray(dataArray, numOfNums);
     
         } while(GoAgain() == true); // do
 
@@ -52,17 +53,10 @@
 //  ===========
 //  FillArray()
 //  ===========
-    void FillArray(int arrayData[ROWS_IN_ARRAY][COLUMNS_IN_ARRAY]) {
-        int row, col;
-        row = col = 0;
-        while (row < ROWS_IN_ARRAY) {
-            while (col < COLUMNS_IN_ARRAY) {
-                arrayData[row][col] = Random();
-                col++;
-            }  // while
-            row++;
-            col = 0;
-        }  // while
+    void FillArray(int arrayData[], int numOfNums) {
+        for (int ii = 0; ii < numOfNums; ii++) {
+            arrayData[ii] = Random();
+        }  // for
     }  // FillArray()
 //  =================
 
@@ -96,21 +90,12 @@
 //  ============
 //  PrintArray()
 //  ============
-    void PrintArray(int arrayData[ROWS_IN_ARRAY][COLUMNS_IN_ARRAY]) {
-
-        int row, col;
+    void PrintArray(int arrayData[], int numOfNums) {
 
         cout << "The random numbers are" << endl;
-        row = col = 0;
-        while (row < ROWS_IN_ARRAY) {
-            while (col < COLUMNS_IN_ARRAY) {
-                cout << arrayData[row][col] << " ";
-                col++;
-            }  // while
-            row++;
-            col = 0;
-            cout << endl;
-        }  // while
+        for (int ii = 0; ii < numOfNums; ii++) {
+            cout << arrayData[ii] << " ";
+        }  // for
     }  // PrintArray()
 //  ==================
 
@@ -160,19 +145,14 @@
 //  =====================
 //  Function SumofArray()
 //  =====================================
-    void SumofArray(int summedArrays[ROWS_IN_ARRAY][COLUMNS_IN_ARRAY]) {
+    void SumofArray(int summedArrays[], int numOfNums) {
 
-        int row, col;
         int sum;
-       
+
         sum = 0;
-
-        for (int row = 0; row < 10; row++) {
-            for (col = 0; col < 10; col++) {
-                sum = sum + summedArrays[row][col];
-            } // for
-        } // for
-
+        for (int ii = 0; ii < numOfNums; ii++) {
+            sum = sum + summedArrays[ii];
+        }  // for
         cout << endl << endl << "Sum of the random numbers is " << sum << endl;
     }  // Function SumofArray()
 //  ===========================
