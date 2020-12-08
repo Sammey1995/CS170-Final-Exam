@@ -6,9 +6,9 @@
 //  =====================
 //  Constant Declarations
 //  ==================================
-    const int MIN_RANDOM_NUMBER = 0;
+    const int MIN_RANDOM_NUMBER =   0;
     const int MAX_RANDOM_NUMBER = 100;
-    const int SIZE_OF_ARRAY = 101;  
+    const int SIZE_OF_ARRAY     = 101;  // better bigger than not big enough
 //  ==================================
 
 //  ===================
@@ -35,8 +35,8 @@
 	int dataArray[SIZE_OF_ARRAY];
 
 	do {
-		SeedGenerator(1);
 		numOfNums = RandomAsk();
+        SeedGenerator(1);
 		FillArray(dataArray, numOfNums);
 
 		PrintArray(dataArray, numOfNums);
@@ -79,7 +79,8 @@
 		if (verdict == 'y')
 			return true;
 		else if (verdict == 'n')
-			cout << "See you next time!" << endl;
+                cout << "Program Execution Terminating..." << endl << endl;
+                cout << "See you next time!" << endl;
 		return false;
 	} while (verdict == 'y' || 'n'); // do
     } // Function GoAgain()
@@ -106,12 +107,7 @@
 //  ====================
     int Random() {
 
-	int ranValue;
-
-	ranValue = MIN_RANDOM_NUMBER +
-		rand() % (MAX_RANDOM_NUMBER - MIN_RANDOM_NUMBER + 1);
-
-	return ranValue;
+	return MIN_RANDOM_NUMBER + rand() % (MAX_RANDOM_NUMBER - MIN_RANDOM_NUMBER + 1);
     } // Function RandomNumber()
 // =============================
 
@@ -136,7 +132,6 @@
     void SeedGenerator(unsigned int seed) {
 
 	srand(seed);
-
     } // Function InitializeGenerator()
 //  ===================================
 
@@ -151,6 +146,7 @@
 	for (int ii = 0; ii < numOfNums; ii++) {
 		sum = sum + summedArrays[ii];
 	}  // for
-	cout << endl << endl << "Sum of the random numbers is " << sum << endl;
+
+	    cout << endl << endl << "Sum of the random numbers is " << sum << endl;
     }  // Function SumofArray()
 //  ===========================
